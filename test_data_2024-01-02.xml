@@ -1,0 +1,116 @@
+<sales_data date="2024-01-02">
+    <products>
+        <product>
+            <id>1</id>
+            <name>Smartphone Galaxy S21</name>
+            <quantity>36</quantity>
+            <price>899.99</price>
+            <category>Electronics</category>
+        </product>
+        <product>
+            <id>2</id>
+            <name>4K TV Ultra HD 55"</name>
+            <quantity>76</quantity>
+            <price>1299.99</price>
+            <category>Electronics</category>
+        </product>
+        <product>
+            <id>3</id>
+            <name>Vacuum Cleaner Dyson V11</name>
+            <quantity>45</quantity>
+            <price>599.00</price>
+            <category>Home Appliances</category>
+        </product>
+        <product>
+            <id>4</id>
+            <name>Air Conditioner LG Dual Inverter</name>
+            <quantity>19</quantity>
+            <price>850.00</price>
+            <category>Home Appliances</category>
+        </product>
+        <product>
+            <id>5</id>
+            <name>Leather Sofa 3-Seater</name>
+            <quantity>9</quantity>
+            <price>2200.00</price>
+            <category>Furniture</category>
+        </product>
+        <product>
+            <id>6</id>
+            <name>Wooden Dining Table Set (6 chairs)</name>
+            <quantity>12</quantity>
+            <price>1500.00</price>
+            <category>Furniture</category>
+        </product>
+        <product>
+            <id>7</id>
+            <name>Blender Ninja Pro</name>
+            <quantity>12</quantity>
+            <price>99.99</price>
+            <category>Kitchen Appliances</category>
+        </product>
+        <product>
+            <id>8</id>
+            <name>Electric Kettle Bosch</name>
+            <quantity>103</quantity>
+            <price>49.99</price>
+            <category>Kitchen Appliances</category>
+        </product>
+        <product>
+            <id>9</id>
+            <name>Gaming Laptop ASUS ROG</name>
+            <quantity>21</quantity>
+            <price>2000.00</price>
+            <category>Computers</category>
+        </product>
+        <product>
+            <id>10</id>
+            <name>Office Chair Ergonomic Mesh</name>
+            <quantity>55</quantity>
+            <price>299.99</price>
+            <category>Furniture</category>
+        </product>
+        <product>
+            <id>11</id>
+            <name>Smartwatch Fitbit Versa 3</name>
+            <quantity>154</quantity>
+            <price>229.95</price>
+            <category>Electronics</category>
+        </product>
+        <product>
+            <id>12</id>
+            <name>Washing Machine Samsung EcoBubble</name>
+            <quantity>6</quantity>
+            <price>700.00</price>
+            <category>Home Appliances</category>
+        </product>
+        <product>
+            <id>13</id>
+            <name>Electric Grill George Foreman</name>
+            <quantity>3</quantity>
+            <price>89.99</price>
+            <category>Kitchen Appliances</category>
+        </product>
+        <product>
+            <id>14</id>
+            <name>Tablet Apple iPad Pro 11"</name>
+            <quantity>8</quantity>
+            <price>799.99</price>
+            <category>Electronics</category>
+        </product>
+        <product>
+            <id>15</id>
+            <name>Refrigerator Whirlpool Double Door</name>
+            <quantity>38</quantity>
+            <price>1200.00</price>
+            <category>Home Appliances</category>
+        </product>
+        <product>
+            <id>16</id>
+            <name>Headphones Sony WH-1000XM4</name>
+            <quantity>44</quantity>
+            <price>349.99</price>
+            <category>Electronics</category>
+        </product>
+    </products>
+</sales_data>
