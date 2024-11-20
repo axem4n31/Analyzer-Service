@@ -1,6 +1,7 @@
 import json
 import redis.asyncio as redis
 from fastapi import APIRouter, UploadFile, File, HTTPException, Depends, status
+from pydantic import ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 from datetime import date, timedelta
 from models.model_service import (
@@ -24,21 +25,31 @@ async def upload_xml(
     redis: redis.Redis = Depends(get_redis),
 ):
     logger = get_logger("upload_xml")
-    try:
-        logger.info(f"Started processing file upload: {file.filename}")
-        data = await parse_xml_to_dict(file=file)
-        await redis.set(str(data.date), data.json(), ex=timedelta(days=1))
-        logger.info(f"Data for date {data.date} cached in Redis")
+    logger.info(f"Started processing file upload: {file.filename}")
 
-        if await add_data(data=data, db=db):
-            logger.info(f"Data added to the database for {data.date}")
-            prompt = await get_llm_prompt(data=data)
-            ai_text = await ai_client.ask_a_question(prompt)
-            await add_report_by_date(date_report=data.date, text=ai_text, db=db)
-            logger.info(f"Report for {data.date} added successfully")
-    except Exception as e:
-        logger.error(f"Error processing file {file.filename}: {e}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+    if not file.filename.endswith(".xml"):
+        logger.warning(f"File {file.filename} is not an XML file")
+        raise HTTPException(
+            status_code=400, detail="Uploaded file must be in XML format"
+        )
+
+    try:
+        data = await parse_xml_to_dict(file=file)
+    except ValidationError as ve:
+        logger.error(f"Validation error for file {file.filename}: {ve}")
+        raise HTTPException(
+            status_code=422, detail="Uploaded XML file failed validation"
+        )
+
+    await redis.set(str(data.date), data.json(), ex=timedelta(days=1))
+    logger.info(f"Data for date {data.date} cached in Redis")
+
+    if await add_data(data=data, db=db):
+        logger.info(f"Data added to the database for {data.date}")
+        prompt = await get_llm_prompt(data=data)
+        ai_text = await ai_client.ask_a_question(prompt)
+        await add_report_by_date(date_report=data.date, text=ai_text, db=db)
+        logger.info(f"Report for {data.date} added successfully")
 
 
 @api_router.get("/get-daily-report/", status_code=status.HTTP_200_OK)
